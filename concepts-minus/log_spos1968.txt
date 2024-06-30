@@ -1,0 +1,65 @@
+new msg*db q0-spos /command=1
+>>> load /usr/archive/19672/messeges/spos0.tghxt /listpage=19
+
+!!!!!!!!!!   ALARMA S.P.O.S   !!!!!!!!!!
+!!! NERTE TESTO NER GEBETRO !!!
+!!! HELPERNA KAREL LSAKEV INSTRUKTO !!!
+ATAKR DANGERSYH ARSMKI EKARYSTA!
+SAFEN SELARE SA EI LUKRE RADIO INSTRUKTOI!
+DEFENTEI AJOXI SA REDAJ NE AGRESORI!
+
+!!!!!!!!!!   ALARM S.P.O.S   !!!!!!!!!!
+!!! TO NIE JEST TEST !!!
+!!! PROSIMY UWAŻNIE WYSŁUCHAĆ INSTRUKCJI !!!
+ATAK NIEBEZPIECZNYCH WOJSK EKARYSTÓW!
+SCHOWAJ SIĘ W SCHRONIE I WYSŁUCHUJ RADIOWYCH INSTRUKCJI!
+ODDZIAŁY OBRONNE AJOX SĄ GOTOWE NA AGRESORÓW!
+
+<<< loaded
+
+admin_acc Y /usr=19672 /ask=0 /now
+!!! admin_perm -> 199672.......[OK]
+
+upd msg*db q0-spos usr all
+!!! WARN (msg*db q0-spos usr all) [Y/N]
+WARN* Y
+!!! ERR q0: msg*db -> block_sys
+!!! ERR q0: block_sys -> perm denied
+!!! perm_acc: rkj42
+!!! change: 11/07/1968 [d/m/y]
+retry last
+!!! ERR q0: msg*db -> block_sys
+!!! ERR q0: block_sys -> perm denied
+!!! perm_acc: rkj42
+!!! change: 11/07/1968 [d/m/y]
+
+unlock base2 017
+!!! unlocked: door017 in: base2
+
+pow m7gen -> base2 017com
+!!! ERR base2: pow -> block_sys
+!!! ERR base2: block_sys -> perm denied
+!!! perm_acc: rkj42
+!!! change 11/07/1968 [d/m/y]
+retry last
+!!! ERR base2: pow -> block_sys
+!!! ERR base2: block_sys -> perm denied
+!!! perm_acc: rkj42
+!!! change 11/07/1968 [d/m/y]
+
+reboot baseA all /fab /acc-del /admin-del /acc+0 /admin=19672 /acc-code=javorski
+!!! WARN_1 (reboot baseA all /fab /acc-del /admin-del /acc+0 /admin=19672 /acc-code=javorski) [Y/N]
+WARN_1* Y
+!!! WARN_2 (reboot baseA all /fab /acc-del /admin-del /acc+0 /admin=19672 /acc-code=javorski) [Y/N]
+WARN_2* Y
+!!! WARN_3 (reboot baseA all /fab /acc-del /admin-del /acc+0 /admin=19672 /acc-code=javorski) [Y/N]
+WARN_3* Y
+!!! ERR baseA: reboot -> block_sys
+!!! ERR baseA: block_sys -> perm denied
+!!! log ERR baseA: coming soon
+!!! sys_shut...................[OK]
+!!! del_data base2 017r........[OK]
+!!! del_log db q0-spos.........[OK]
+!!! del_acc 19672 /all.........[OK]
+
+sys halt, contact admin...
